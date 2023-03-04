@@ -1,21 +1,107 @@
-MIT License
+public class Puerta
+{
+    public string color { get; private set; }
 
-Copyright (c) 2023 L3slywawa
+    public Puerta()
+    {
+        color = "Café";
+    }
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+    public void SetColor(string newColor)
+    {
+        color = newColor;
+    }
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+    public void MostrarDatos()
+    {
+        Console.WriteLine($"Soy una Puerta, mi color es {color}.");
+    }
+}
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+public class Casa
+{
+    public int area { get; private set; }
+    public Puerta puerta { get; private set; }
+
+    public Casa(int newArea)
+    {
+        area = newArea;
+        puerta = new Puerta();
+    }
+
+    public void SetArea(int newArea)
+    {
+        area = newArea;
+    }
+
+    public void SetPuerta(Puerta newPuerta)
+    {
+        puerta = newPuerta;
+    }
+
+    public void MostrarDatos()
+    {
+        Console.WriteLine($"Soy una Casa, mi área es {area} m2.");
+        puerta.MostrarDatos();
+    }
+}
+
+public class Apartamento : Casa
+{
+    public Apartamento() : base(50) { }
+
+    public void MostrarDatos()
+    {
+        Console.WriteLine($"Soy un Apartamento, mi área es {area} m2.");
+    }
+}
+
+public class Persona
+{
+    public string nombre { get; private set; }
+    public Casa casa { get; private set; }
+
+    public Persona()
+    {
+        nombre = "Carlos";
+        casa = new Casa(150);
+    }
+
+    public Persona(string newNombre, Casa newCasa)
+    {
+        nombre = newNombre;
+        casa = newCasa;
+    }
+
+    public void SetNombre(string newNombre)
+    {
+        nombre = newNombre;
+    }
+
+    public void SetCasa(Casa newCasa)
+    {
+        casa = newCasa;
+    }
+
+    public void MostrarDatos()
+    {
+        Console.WriteLine($"Mi nombre es {nombre}.");
+        casa.MostrarDatos();
+    }
+
+    public main(){
+Persona Carlos = new Persona();
+Carlos.MostrarDatos();
+//  Mi nombre es Carlos.
+//     Soy una Casa, mi área es 150 m2.
+//     Soy una Puerta, mi color es Café.
+
+Casa casaGrande = new Casa(300);
+casaGrande.SetPuerta(new Puerta());
+casaGrande.puerta.SetColor("Verde");
+casaGrande.MostrarDatos();
+//  Soy una Casa, mi área es 300 m2.
+//         Soy
+    }
+}
+
